@@ -1,6 +1,7 @@
 from unittest import TestCase
 from rainbow.datasources import *
 from rainbow.datasources.datasource_exceptions import *
+from rainbow.cloudformation import CloudformationException
 
 __author__ = 'omrib'
 
@@ -17,7 +18,7 @@ class TestDataSources(TestCase):
         self.datasource_collection = DataSourceCollection(data_sources)
 
     def test_non_exist_parameter(self):
-        self.assertRaises(InvalidParameterException, self.datasource_collection.get_parameter_recursive, 'test')
+        self.assertEqual(self.datasource_collection.get_parameter_recursive('missing'), None)
 
     def test_pointer(self):
         self.assertEqual(
