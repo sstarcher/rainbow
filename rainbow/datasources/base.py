@@ -132,6 +132,3 @@ class DataSourceCollection(list):
         for data_source in self:
             if parameter in data_source:
                 return data_source[parameter]
-        else:
-            raise InvalidParameterException(
-                "Unable to find parameter %s in any of the data sources %r" % (parameter, self))
