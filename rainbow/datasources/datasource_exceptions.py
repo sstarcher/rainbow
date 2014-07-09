@@ -36,7 +36,3 @@ class InvalidDataSourceFormatException(DataSourceBaseException):
 
 class UnknownDataSourceException(DataSourceBaseException):
     pass
-
-
-class InvalidParameterException(DataSourceBaseException):
-    pass
