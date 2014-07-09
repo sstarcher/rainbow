@@ -31,6 +31,7 @@ import argparse
 import pprint
 import sys
 import yaml
+import json
 import logging
 from rainbow.datasources import DataSourceCollection
 from rainbow.preprocessor import Preprocessor
@@ -86,8 +87,8 @@ def main():  # pragma: no cover
     logger.debug('Template:\n%s', yaml.dump(template))
 
     if args.noop:
-        logger.info('NOOP mode. exiting')
-        return
+    	print json.dumps(template, sort_keys=True, indent=2, separators=(',', ': '))
+    	return
 
     cloudformation = Cloudformation(args.region)
 
