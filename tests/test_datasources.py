@@ -16,6 +16,9 @@ class TestDataSources(TestCase):
 
         self.datasource_collection = DataSourceCollection(data_sources)
 
+    def test_non_exist_parameter(self):
+        self.assertRaises(InvalidParameterException, self.datasource_collection.get_parameter_recursive, 'test')
+
     def test_pointer(self):
         self.assertEqual(
             self.datasource_collection.get_parameter_recursive('a_ptr'),
