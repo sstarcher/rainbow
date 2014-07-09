@@ -78,7 +78,7 @@ class Preprocessor(object):
         template = copy.deepcopy(template)
 
         if isinstance(template, dict):
-            if len(template) == 1 and template.keys()[0].startswith('Rb::'):
+            if len(template) == 1 and str(template.keys()[0]).startswith('Rb::'):
                 k, v = template.items()[0]
                 if k.startswith('Rb::'):
                     function = k[4:]
