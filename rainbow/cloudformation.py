@@ -92,15 +92,14 @@ class Cloudformation(object):
 
         parameters = {}
         templateParameters = template.get('Parameters', [])
-        for parameter in templateParameters:
-            print parameter
+        for parameter, value in templateParameters.iteritems():
             param = datasource_collection.get_parameter_recursive(parameter)
             
             if param:
                 parameters[parameter] = param
             else:
-                if 'Default' in templateParameters:
-                    param = templateParameters['Default']
+                if 'Default' in value:
+                    param = value['Default']
                 else:
                     raise CloudformationException(
                         "No default value parameter %s and no value in data sources" % (parameter))
